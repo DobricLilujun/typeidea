@@ -18,11 +18,12 @@ class Link(models.Model):
                                          choices=zip(range(1, 6), range(1, 6)),
                                          verbose_name="权重",
                                          help_text="权重高展示顺序靠前")
-    owner = models.ForeignKey(User, verbose_name="作者",on_delete=models.DO_NOTHING)
+    owner = models.ForeignKey(User, verbose_name="作者", on_delete=models.DO_NOTHING)
     created_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
 
-    class meta:
-        verbose_name = verbose_name_plural = "友链"
+    class Meta:
+        verbose_name = verbose_name_plural = "链接"
+
 
 class SideBar(models.Model):
     STATUS_SHOW = 1
