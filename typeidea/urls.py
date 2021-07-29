@@ -21,6 +21,7 @@ from config.views import links
 from .custom_site import custom_site
 
 urlpatterns = [
+    # re_path(r'^$', IndexView.as_view(), name='index'),
     re_path(r'^$', post_list),
     re_path(r'^category/(?P<category_id>\d+)/$', post_list),
     re_path(r'^tag/(?P<tag_id>\d+)/$', post_list),
@@ -28,4 +29,5 @@ urlpatterns = [
     re_path(r'^links/$', links),
     path('super_admin/', admin.site.urls),
     path('admin/', custom_site.urls),
+    # path('admin/', admin.site.urls),
 ]
