@@ -1,0 +1,61 @@
+{% extends "./base.html" %}
+{% load comment_block %}
+
+{% block title %}
+      <div class="row">
+              <hr/>
+              <nav class="navbar fixed-bottom navbar-expand-md navbar-light bg-light flex-top ">
+                 <a class="navbar-brand" href="#"> 首页  typeidea 博客系统</a>
+                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                     <ul  class="navbar-nav mr-auto">
+                          {% for cate in navs %}
+                             <li class="nav-item">
+                                 <a class="nav-link" href="{% url 'category-list' cate.id%}"> {{ cate.name }}</a>
+                             </li>
+                          {% endfor %}
+                     </ul>
+                     <form class="form-inline my-2 my-sm-0 my-md-0 my-xs-0 my-lg-0">
+                         <input class="form-control mr-sm-2 mr-md-2 mr-xs-2 mr-lg-2" type="search" placeholder="请输入搜索内容" aria-label="Search">
+                         <button class="btn btn-outline-success" type="submit"> 搜索 </button>
+                     </form>
+                 </div>
+              </nav>
+     </div>
+{% endblock %}
+
+{% block main %}
+    {% if post %}
+        <div>
+            <span>作者：{{ post.owner.username }}</span>
+            <span>分类：{{ post.category.name }}</span>
+        </div>
+        <hr/>
+        <p>
+            {{ post.content }}
+        </p>
+    {% endif %}
+
+    {% comment_block request.path %}
+{% endblock %}
+
+{% block tail %}
+     <div class="row">
+              <hr/>
+              <nav class="navbar fixed-bottom navbar-expand-md navbar-light bg-light flex-top ">
+                 <a class="navbar-brand" href="#"> 首页  typeidea 博客系统</a>
+                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                     <ul  class="navbar-nav mr-auto">
+                          {% for cate in navs %}
+                             <li class="nav-item">
+                                 <a class="nav-link" href="{% url 'category-list' cate.id%}"> {{ cate.name }}</a>
+                             </li>
+                          {% endfor %}
+                     </ul>
+                     <form class="form-inline my-2 my-sm-0 my-md-0 my-xs-0 my-lg-0">
+                         <input class="form-control mr-sm-2 mr-md-2 mr-xs-2 mr-lg-2" type="search" placeholder="请输入搜索内容" aria-label="Search">
+                         <button class="btn btn-outline-success" type="submit"> 搜索 </button>
+                     </form>
+                 </div>
+              </nav>
+     </div>
+{% endblock %}

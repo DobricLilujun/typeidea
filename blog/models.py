@@ -32,8 +32,8 @@ class Category(models.Model):
     #         'categories': normal_categories,
     #     }
     #
-    # def __str__(self):
-    #     return self.name
+    def __str__(self):
+        return self.name
 
     @classmethod
     def get_nav(cls):

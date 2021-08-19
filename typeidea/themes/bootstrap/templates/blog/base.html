@@ -1,0 +1,53 @@
+{% load static %}
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title> </title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'bootstrap-4.6.0-dist/css/bootstrap.css' %}" rossorigin="anonymous">
+
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+      <style>
+          .post{
+              margin-bottom: 5px;
+          }
+      </style>
+  </head>
+  <body>
+
+  <!-- 头部 样式 -->
+    <div class="container head">
+        <div class="row">
+            {% block head %} 首页 {% endblock %}
+        </div>
+        <div class="jumbotron">
+            <h1 class="display-4"> Typeidea </h1>
+            <p class="lead"> 基于Django的多人博客系统 </p>
+        </div>
+    </div>
+
+    <div class="container main">
+        {% block main %} {% endblock %}
+    </div>
+
+      <footer class="footer">
+          <div class="container tail">
+             {% block tail %} {% endblock %}
+          </div>
+      </footer>
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="{% static 'jquery-3.6.0.min.js' %}"  crossorigin="anonymous"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="{% static 'bootstrap-4.6.0-dist/js/bootstrap.js' %}" crossorigin="anonymous"></script>
+  </body>
+</html>

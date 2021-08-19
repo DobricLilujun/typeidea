@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title> </title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="../../../../static/external/bootstrap-4.6.0-dist/css/bootstrap.min.css" rossorigin="anonymous">
+
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+  <!-- 头部 样式 -->
+    <div class="container head">
+        <div class="row">
+            <nav class="navbar fixed-top navbar-expand-md navbar-light bg-light flex-top ">
+                <a class="navbar-brand" href="#"> {% block title %} 首页 {% endblock %} - typeidea 博客系统 你好呀 </a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        {% for cate in navs %}
+                            <li class="nav-item" >
+                                <a class="nav-link" href="{% url 'category-list' cate.id%}">{{ cate.name }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <form class="form-inline my-2 my-sm-0 my-md-0 my-xs-0 my-lg-0">
+                        <input class="form-control mr-sm-2 mr-md-2 mr-xs-2 mr-lg-2" type="search" placeholder="请输入搜索内容" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit"> 搜索 </button>
+                    </form>
+                </div>
+            </nav>
+        </div>
+        <div class="jumbotron">
+            <h1 class="display-4"> Typeidea </h1>
+            <p class="lead"> 基于Django的多人博客系统 </p>
+        </div>
+
+    </div>
+
+    <div class="container main">
+        <div class="row">
+            <div class="col-xl-9 post-list">
+                <div class="card post">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="#">这里是标题</a></h5>
+                        <span class="card-link">作者:<a href="#">胡阳</a></span>
+                        <span class="card-link">分类:<a href="#">Python</a></span>
+                        <span class="card-link">标签:
+                            <a href="#">Python</a>
+                            <a href="#">Django</a>
+                            <a href="#">经验</a>
+                        </span>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.<a href="#">完整内容</a></p>
+                    </div>
+                </div>
+                <div class="card post">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="#">这里是标题</a></h5>
+                        <span class="card-link">作者:<a href="#">胡阳</a></span>
+                        <span class="card-link">分类:<a href="#">Python</a></span>
+                        <span class="card-link">标签:
+                            <a href="#">Python</a>
+                            <a href="#">Django</a>
+                            <a href="#">经验</a>
+                        </span>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.<a href="#">完整内容</a></p>
+                    </div>
+                </div>
+                <div class="card post">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="#">这里是标题</a></h5>
+                        <span class="card-link">作者:<a href="#">the5fire</a></span>
+                        <span class="card-link">分类:<a href="#">Python</a></span>
+                        <span class="card-link">标签:
+                            <a href="#">Python</a>
+                            <a href="#">Django</a>
+                            <a href="#">经验</a>
+                        </span>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.<a href="#">完整内容</a></p>
+                    </div>
+                </div>
+                <a href="?page={{ page_obj.previous_page_number }}">上一页</a>
+                Page 1 of 1.
+                <a href="?page={{ page_obj.next_page_number }}">下一页</a>
+            </div>
+            <div class="col-xl-3">
+                <div class="card sidebar">
+                    <div class="card-body">
+                    <h4 class="card-title">关于博主</h4>
+                    <p>
+                    网名：the5fire， 多年Python工程师
+                    </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <hr/>
+            <div class="row">
+                <nav class="navbar fixed-top navbar-expand-md navbar-light bg-light flex-top ">
+                    <a class="navbar-brand" href="#"> {% block title %} 首页 {% endblock %} - typeidea 博客系统 </a>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            {% for cate in navs %}
+                                <li class="nav-item" >
+                                    <a class="nav-link" href="{% url 'category-list' cate.id%}">{{ cate.name }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        <form class="form-inline my-2 my-sm-0 my-md-0 my-xs-0 my-lg-0">
+                            <input class="form-control mr-sm-2 mr-md-2 mr-xs-2 mr-lg-2" type="search" placeholder="请输入搜索内容" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit"> 搜索 </button>
+                        </form>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <div class="container power">
+            <span class="text-muted">Power by Typeidea@the5fire</span>
+        </div>
+    </footer>
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="../../../../static/js/jquery-3.6.0.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="../../../../static/external/bootstrap-4.6.0-dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+  </body>
+</html>

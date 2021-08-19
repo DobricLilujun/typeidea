@@ -1,0 +1,89 @@
+{% extends "./base.html" %}
+
+{% block head %}
+    <nav class="navbar fixed-top navbar-expand-md navbar-light bg-light flex-top">
+         <a class="navbar-brand" href="#"> 首页  typeidea 博客系统</a>
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+             <ul  class="navbar-nav mr-auto">
+                  {% for cate in navs %}
+                     <li class="nav-item">
+                         <a class="nav-link" href="{% url 'category-list' cate.id%}"> {{ cate.name }}</a>
+                     </li>
+                  {% endfor %}
+             </ul>
+             <form class="form-inline my-2 my-sm-0 my-md-0 my-xs-0 my-lg-0" action="/search/" method="GET">
+                 <input class="form-control mr-sm-2 mr-md-2 mr-xs-2 mr-lg-2" type="search" name= "keyword" placeholder="请输入搜索内容" aria-label="Search" value="{{ keyword }}">
+                 <button class="btn btn-outline-success" type="submit"> 搜索 </button>
+             </form>
+         </div>
+    </nav>
+{% endblock %}
+
+
+{% block main %}
+    <!-- 主博文内容 -->
+    <div class="row">
+        <ul class="col-md-9">
+            {% for post in post_list %}
+                <div class="col-xl-12 post-list">
+                        <div class="card post">
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="{% url 'post-detail' post.id%}">{{post.title}}</a></h5>
+                                <span class="card-link">作者:<a href="{% url 'author' post.owner.id %}">{{ post.owner }}</a></span>
+                                <span class="card-link">分类:<a href="#">{{ post.category.name }}</a></span>
+                                <span class="card-link">标签:
+                                    <a href="{% url 'tag-list' post.tag.id%}">{{ post.tag.name }}</a>
+                                </span>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.<a href="#">完整内容</a></p>
+                            </div>
+                        </div>
+                </div>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- 页码介绍 -->
+    {% if page_obj %}
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">上一页</a>
+            {% endif %}
+            Page {{ page_obj.number }} of {{ paginator.num_pages }} .
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">下一页</a>
+            {% endif %}
+    {% endif %}
+
+    <!-- 作者介绍 -->
+    <div>
+        <div class="card sidebar">
+            <div class="card-body">
+            <h4 class="card-title">关于博主</h4>
+            <p>
+            网名：the5fire， 多年Python工程师
+            </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block tail %}
+     <div class="row">
+              <hr/>
+              <nav class="navbar fixed-bottom navbar-expand-md navbar-light bg-light flex-top ">
+                 <a class="navbar-brand" href="#"> 首页  typeidea 博客系统</a>
+                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                     <ul  class="navbar-nav mr-auto">
+                          {% for cate in navs %}
+                             <li class="nav-item">
+                                 <a class="nav-link" href="{% url 'category-list' cate.id%}"> {{ cate.name }}</a>
+                             </li>
+                          {% endfor %}
+                     </ul>
+                     <form class="form-inline my-2 my-sm-0 my-md-0 my-xs-0 my-lg-0">
+                         <input class="form-control mr-sm-2 mr-md-2 mr-xs-2 mr-lg-2" type="search" placeholder="请输入搜索内容" aria-label="Search">
+                         <button class="btn btn-outline-success" type="submit"> 搜索 </button>
+                     </form>
+                 </div>
+              </nav>
+     </div>
+{% endblock %}
